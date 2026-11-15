@@ -1,0 +1,7 @@
+/target/
+*.class
+smartweb.db
+*.db-shm
+*.db-wal
+.idea/
+.vscode/
