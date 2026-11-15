@@ -42,7 +42,13 @@ trabalhin_Javinho/
 ├── .gitignore                                 # Arquivos ignorados pelo Git (target/, .idea/, etc.)
 ├── pom.xml                                    # Configurações, plugins e dependências do Maven
 └── README.md                                  # Documentação do projeto
-```[cite: 1]
-
+```
 ---
+
+👤 Autoria
+
+Desenvolvimento (Módulo Login - Pessoa 06)
+
+Aluno: Samuel Menezes — Análise e Desenvolvimento de Sistemas (Faculdade SENAC)
+2° Periódo
 
