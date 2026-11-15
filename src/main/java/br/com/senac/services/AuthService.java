@@ -33,4 +33,59 @@ public class AuthService {
         }
     }
 
+
+
+public void register(String username, String email,
+                     char[] password, char[] confirmPassword) {
+
+    // 1. Validar o nome de usuário
+    if (username == null ||
+            !username.matches("[a-zA-Z0-9_]{3,20}")) {
+
+        throw new IllegalArgumentException(
+                "O usuário deve ter de 3 a 20 caracteres, " +
+                        "utilizando letras, números ou _."
+        );
+    }
+
+    // 2. Validar o e-mail
+    if (email == null ||
+            !email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+
+        throw new IllegalArgumentException(
+                "E-mail inválido."
+        );
+    }
+
+    // 3. Validar o tamanho da senha
+    if (password == null || password.length < 8) {
+        throw new IllegalArgumentException(
+                "A senha deve ter pelo menos 8 caracteres."
+        );
+    }
+
+    // 4. Verificar se as senhas são iguais
+    if (confirmPassword == null ||
+            !java.util.Arrays.equals(password, confirmPassword)) {
+
+        throw new IllegalArgumentException(
+                "As senhas não coincidem."
+        );
+    }
+
+    // 5. Impedir usuários ou e-mails duplicados
+    if (userRepository.findByUsernameOrEmail(username).isPresent() ||
+            userRepository.findByUsernameOrEmail(email).isPresent()) {
+
+        throw new IllegalArgumentException(
+                "Nome de usuário ou e-mail já cadastrado."
+        );
+    }
+// 6. Gerar hash e salt da senha
+// TODO: Integrar com PasswordService
+
+// 7. Salvar o usuário no banco de dados
+// TODO: Integrar com UserRepository
+}
+
 }
