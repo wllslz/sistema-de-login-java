@@ -1,7 +1,28 @@
+package br.com.senac.services;
 public class AuthService {
 
+    // Dependências utilizadas pelo serviço de autenticação
+    private final UserRepository userRepository;
+    private final PasswordService passwordService;
+
+
+    public AuthService(UserRepository userRepository,
+                       PasswordService passwordService) {
+
+        this.userRepository = java.util.Objects.requireNonNull(
+                userRepository, "UserRepository não pode ser nulo."
+        );
+
+        this.passwordService = java.util.Objects.requireNonNull(
+                passwordService, "PasswordService não pode ser nulo."
+        );
+    }
+
+
     public User login(String loginInput, char[] password) {
-// 1. Verificar se login e senha foram preenchidos
+
+        // 1. Verificar se login e senha foram preenchidos
+
         if (loginInput == null || loginInput.trim().isEmpty() || password == null ||
                 password.length == 0) {
             throw new IllegalArgumentException("Login ou senha inválidos.");
@@ -37,7 +58,7 @@ public class AuthService {
 
 public void register(String username, String email,
                      char[] password, char[] confirmPassword) {
-
+    try {
     // 1. Validar o nome de usuário
     if (username == null ||
             !username.matches("[a-zA-Z0-9_]{3,20}")) {
@@ -81,11 +102,29 @@ public void register(String username, String email,
                 "Nome de usuário ou e-mail já cadastrado."
         );
     }
-// 6. Gerar hash e salt da senha
-// TODO: Integrar com PasswordService
 
-// 7. Salvar o usuário no banco de dados
-// TODO: Integrar com UserRepository
+    // 6. Gerar hash e salt da senha
+    var senhaProtegida = passwordService.hashPassword(password);
+
+    // 7. Salvar o usuário no banco de dados
+    userRepository.save(
+            username,
+            email,
+            senhaProtegida.hash(),
+            senhaProtegida.salt()
+    );
+
+    } finally {
+        // Limpar as senhas da memória
+        if (password != null) {
+            java.util.Arrays.fill(password, '\0');
+        }
+
+        if (confirmPassword != null) {
+            java.util.Arrays.fill(confirmPassword, '\0');
+        }
+    }
+
 }
 
 }
