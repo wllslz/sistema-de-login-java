@@ -1,4 +1,7 @@
 package br.com.senac.services;
+
+import br.com.senac.models.User;
+import br.com.senac.repositories.UserRepository;
 public class AuthService {
 
     // Dependências utilizadas pelo serviço de autenticação
