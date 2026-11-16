@@ -1,54 +1,51 @@
-# sistema-de-login-java
-Projeto desenvolvido em **Java** com gerenciamento de dependências via **Apache Maven**, estruturado no pacote `br.com.senac`. Este repositório contempla a implementação e organização da camada de serviços de autenticação (`AuthService`) na branch `pessoa-06-login`.
+# Sistema de Login em Java (SENAC)
 
----
+Aplicação de autenticação e gerenciamento de usuários desenvolvida em Java 17 com persistência em banco de dados SQLite, criptografia de senhas via **PBKDF2WithHmacSHA256** e interface de linha de comando (CLI).
 
-## 📋 Visão Geral
+## Arquitetura do Projeto
 
-O sistema tem como objetivo estruturar a lógica de entrada e validação de usuários da aplicação, isolando a regra de negócio de autenticação na camada de serviços (`services`) e mantendo o ponto de entrada principal desacoplado.
+    src/main/java/br/com/senac/
+    ├── App.java                     # Ponto de entrada e injeção de dependências
+    ├── database/
+    │   └── Database.java            # Conexão SQLite e criação automática da tabela users
+    ├── models/
+    │   ├── User.java                # Modelo público de usuário autenticado
+    │   └── StoredAccount.java       # Modelo interno com hash e salt persistidos
+    ├── repositories/
+    │   └── UserRepository.java      # Operações CRUD e consultas no SQLite
+    ├── services/
+    │   ├── AuthService.java         # Regras de negócio de cadastro e login
+    │   └── PasswordService.java     # Derivação de hash PBKDF2 e verificação em tempo constante
+    ├── ui/
+    │   └── ConsoleUI.java           # Menu interativo no terminal (cadastro, login, perfil e logout)
+    └── validators/
+        └── InputValidator.java      # Validação e normalização de username, e-mail e senha
 
-### Funcionalidades Principais
-* **Ponto de Entrada (`App.java`):** Inicialização da aplicação e fluxo principal de execução.
-* **Serviço de Autenticação (`AuthService.java`):** Encapsulamento da lógica de verificação de credenciais e controle de acesso (login).
-* **Suíte de Testes (`AppTest.java`):** Estrutura preparada para validação unitária das regras implementadas.
+## Requisitos
 
----
+- **Java JDK 17** ou superior
+- **Apache Maven 3.8+**
 
-## Tecnologias Utilizadas
+## Como Compilar e Executar
 
-* **Linguagem:** Java
-* **Gerenciador de Build e Dependências:** Apache Maven (`pom.xml` / `.mvn`)
-* **Controle de Versão:** Git (Branch de desenvolvimento: `pessoa-06-login`)
-* **IDE de Referência:** IntelliJ IDEA
+    # Compilar o projeto
+    mvn clean compile
 
----
+    # Executar os testes automatizados
+    mvn test
 
-## Estrutura de Diretórios
+    # Executar a aplicação via terminal
+    mvn exec:java -Dexec.mainClass="br.com.senac.App"
 
-```text
-trabalhin_Javinho/
-├── .mvn/                                      # Configurações do Maven Wrapper
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── br/com/senac/
-│   │           ├── services/
-│   │           │   └── AuthService.java       # Lógica de negócio para autenticação/login
-│   │           └── App.java                   # Classe principal (ponto de entrada)
-│   └── test/
-│       └── java/
-│           └── br/com/senac/
-│               └── AppTest.java               # Testes unitários da aplicação
-├── .gitignore                                 # Arquivos ignorados pelo Git (target/, .idea/, etc.)
-├── pom.xml                                    # Configurações, plugins e dependências do Maven
-└── README.md                                  # Documentação do projeto
-```
----
+## Segurança e Validações
 
-👤 Autoria
+- **Criptografia:** PBKDF2WithHmacSHA256 com 210.000 iterações, chave derivada de 256 bits e salt aleatório de 16 bytes por usuário (`SecureRandom`), utilizando comparação em tempo constante (`MessageDigest.isEqual`).
+- **Prevenção contra SQL Injection:** Todas as consultas utilizam `PreparedStatement` parametrizado.
+- **Regras de Entrada:**
+  - **Username:** 3 a 20 caracteres alfanuméricos, `.`, `_` ou `-`.
+  - **E-mail:** formato válido normalizado em minúsculas.
+  - **Senha:** mínimo de 8 caracteres contendo letra maiúscula, letra minúscula e número.
 
-Desenvolvimento (Módulo Login - Pessoa 06)
+## Documentação Complementar
 
-Aluno: Samuel Menezes — Análise e Desenvolvimento de Sistemas (Faculdade SENAC)
-2° Periódo
-
+Consulte [docs/ARQUITETURA.md](docs/ARQUITETURA.md) para detalhes do esquema do banco de dados, fluxos de autenticação e divisão de módulos da equipe.
