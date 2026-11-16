@@ -92,8 +92,11 @@ public class ConsoleUI {
             String password = scanner.nextLine();
             InputValidator.validatePassword(password);
 
-            User created = authService.register(username, email, password, "USER");
-            System.out.println("\n[OK] Usuário '" + created.username() + "' cadastrado com sucesso!");
+            System.out.print("Confirme a senha: ");
+            String confirmPassword = scanner.nextLine();
+
+            authService.register(username, email, password.toCharArray(), confirmPassword.toCharArray());
+            System.out.println("\n[OK] Usuário '" + username + "' cadastrado com sucesso!");
         } catch (IllegalArgumentException e) {
             System.out.println("\n[Erro de Validação] " + e.getMessage());
         } catch (Exception e) {
@@ -113,13 +116,9 @@ public class ConsoleUI {
                 throw new IllegalArgumentException("A senha não pode ser vazia.");
             }
 
-            User user = authService.login(identifier, password);
-            if (user != null) {
-                loggedUser = user;
-                System.out.println("\n[OK] Autenticado com sucesso!");
-            } else {
-                System.out.println("\n[Erro] Usuário/e-mail ou senha inválidos.");
-            }
+            User user = authService.login(identifier, password.toCharArray());
+            loggedUser = user;
+            System.out.println("\n[OK] Autenticado com sucesso!");
         } catch (IllegalArgumentException e) {
             System.out.println("\n[Erro de Validação] " + e.getMessage());
         } catch (Exception e) {
