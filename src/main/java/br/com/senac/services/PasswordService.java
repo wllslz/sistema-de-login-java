@@ -1,4 +1,4 @@
-package projetopoo;
+package br.com.senac.services;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

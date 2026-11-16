@@ -1,4 +1,4 @@
-package projetopoo;
+package br.com.senac;
 
 /**
  * Hello world!
