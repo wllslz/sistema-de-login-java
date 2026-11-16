@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Login - SENAC</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Sistema de Login</h1>
+    <p class="subtitle">SENAC • Java + SQLite + PBKDF2</p>
+
+    <div id="alertBox" class="alert" role="alert"></div>
+
+    <section id="authSection">
+      <div class="tabs">
+        <button type="button" class="tab active" id="tabLogin">Entrar</button>
+        <button type="button" class="tab" id="tabRegister">Cadastrar</button>
+      </div>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginIdentifier">Usuário ou E-mail</label>
+          <input type="text" id="loginIdentifier" required placeholder="ex: willian ou willian@senac.com" />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Senha</label>
+          <input type="password" id="loginPassword" required placeholder="Digite sua senha" />
+        </div>
+        <button type="submit" class="submit">Acessar Conta</button>
+      </form>
+
+      <form id="registerForm" class="hidden">
+        <div class="field">
+          <label for="regUsername">Nome de usuário (3-20 caracteres)</label>
+          <input type="text" id="regUsername" required placeholder="ex: willian_dev" />
+        </div>
+        <div class="field">
+          <label for="regEmail">E-mail</label>
+          <input type="email" id="regEmail" required placeholder="ex: willian@senac.com" />
+        </div>
+        <div class="field">
+          <label for="regPassword">Senha (mín. 8 chars, maiúscula, minúscula e número)</label>
+          <input type="password" id="regPassword" required placeholder="Ex: Senha123" />
+        </div>
+        <div class="field">
+          <label for="regConfirm">Confirmar senha</label>
+          <input type="password" id="regConfirm" required placeholder="Repita a senha" />
+        </div>
+        <button type="submit" class="submit">Criar Conta</button>
+      </form>
+    </section>
+
+    <section id="profileSection" class="hidden">
+      <div class="profile-box">
+        <div class="profile-row"><span>ID no Banco</span><strong id="profId">-</strong></div>
+        <div class="profile-row"><span>Usuário</span><strong id="profUser">-</strong></div>
+        <div class="profile-row"><span>E-mail</span><strong id="profEmail">-</strong></div>
+        <div class="profile-row"><span>Perfil</span><span class="badge" id="profRole">USER</span></div>
+      </div>
+      <button type="button" class="submit logout" id="logoutBtn">Sair da Conta (Logout)</button>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
