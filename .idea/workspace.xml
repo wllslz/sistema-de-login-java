@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5873e85f-22a9-4334-ae4b-908060964c50" name="Changes" comment="Commit um, incluindo items básicos do Maven">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/senac/services/AuthService.java" afterDir="false" />
+    <list default="true" id="5873e85f-22a9-4334-ae4b-908060964c50" name="Changes" comment="Código conforme documentação, porém, aguardando Pessoa-05 para testar código.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../trabalhin_Javinho\exportToHTML" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -17,18 +21,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sam1borabil"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sam1borabil&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/wllslz/sistema-de-login-java.git",
-    "accountId": "c229db62-dbdb-49fc-97fb-1888e5911ba0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/wllslz/sistema-de-login-java.git&quot;,
+    &quot;accountId&quot;: &quot;c229db62-dbdb-49fc-97fb-1888e5911ba0&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,
   &quot;fromUser&quot;: false
@@ -47,7 +51,10 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "pessoa-06-login",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/samuel/IdeaProjects/aprendendo_Java/trabalhin_Javinho/src/main/java/br/com/senac/services"
+    "last_opened_file_path": "C:/Users/samuel/IdeaProjects/aprendendo_Java/trabalhin_Javinho/src/main/java/br/com/senac/services",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -136,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit zero" />
     <MESSAGE value="Commit um, incluindo items básicos do Maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit um, incluindo items básicos do Maven" />
+    <MESSAGE value="Código conforme documentação, porém, aguardando Pessoa-05 para testar código." />
+    <option name="LAST_COMMIT_MESSAGE" value="Código conforme documentação, porém, aguardando Pessoa-05 para testar código." />
   </component>
 </project>
